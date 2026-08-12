@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aeralla | Portfolio & Creative Studio</title>
+  <meta name="description" content="Aeralla — creative design, brand identity and digital showcases. Explore curated projects and contact Aeralla for collaborations." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Aeralla | Portfolio & Creative Studio" />
+  <meta property="og:description" content="Creative design, brand identity and digital showcases by Aeralla." />
+  <meta property="og:image" content="/assets/hero.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card-bg: #12151e;
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.35);
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --nav-height: 72px; /* used for spacing & scroll offsets */
+      --max-width: 1100px;
+      --radius: 8px;
+      --focus-ring: 3px;
+    }
+
+    /* Base/reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Skip link for keyboard users */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #111827;
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      z-index: 2000;
+      transition: top 0.2s ease;
+      border-radius: 0 0 6px 0;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0.5rem; }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(9, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.8rem 1rem;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .logo span { color: var(--accent); }
+
+    /* Desktop nav */
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.15s ease;
+      padding: 0.25rem 0.35rem;
+      border-radius: 6px;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--accent);
+      outline: none;
+      background: rgba(139,92,246,0.03);
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text);
+      padding: 0.35rem 0.5rem;
+      border-radius: 8px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: calc(90vh - var(--nav-height));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem;
+      background: radial-gradient(circle at 50% 30%, var(--accent-glow) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 4.25rem);
+      font-weight: 900;
+      line-height: 1.05;
+      max-width: 900px;
+      margin-bottom: 1rem;
+    }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 640px; margin-bottom: 2rem; }
+
+    .btn-group { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px var(--accent-glow); }
+    .cta-btn:focus { outline: none; box-shadow: 0 0 0 var(--focus-ring) rgba(139,92,246,0.18); }
+
+    .cta-btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .cta-btn-secondary:hover { border-color: var(--accent); }
+
+    /* Container Layout */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    .section-title { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .section-desc { color: var(--muted); margin-bottom: 2rem; }
+
+    /* Grid & Cards */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .portfolio-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+    .portfolio-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+
+    .card-img img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .card-body { padding: 1.25rem; }
+    .card-body h3 { font-size: 1.1rem; margin-bottom: 0.45rem; }
+    .card-body p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.9rem; }
+    .tags { display:flex; gap:0.5rem; flex-wrap:wrap; }
+    .tag {
+      background: rgba(139, 92, 246, 0.12);
+      color: var(--accent);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+    }
+
+    /* Social Links Section */
+    .social-links { display:flex; gap:1rem; margin-top:1rem; flex-wrap:wrap; }
+    .social-link {
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.6rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-weight: 500;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .social-link:hover, .social-link:focus { border-color: var(--accent); color: var(--accent); outline: none; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Accessibility & scroll behavior */
+    section, main { scroll-margin-top: calc(var(--nav-height) + 1rem); } /* avoid being hidden by fixed nav */
+
+    /* Focus-visible for keyboard users */
+    :focus { outline: none; }
+    :focus-visible { outline: 3px solid rgba(139,92,246,0.18); outline-offset: 2px; border-radius: 6px; }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .hero { padding: calc(var(--nav-height) + 2rem) 1rem 3rem; }
+    }
+
+    /* Mobile menu (simple accessible toggle) */
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      right: 1rem;
+      top: calc(var(--nav-height) + 8px);
+      background: linear-gradient(180deg, rgba(18,21,30,0.98), rgba(16,18,25,0.98));
+      border: 1px solid var(--border);
+      padding: 0.75rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      min-width: 180px;
+    }
+    .mobile-menu a {
+      display: block;
+      padding: 0.55rem 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .mobile-menu a:hover, .mobile-menu a:focus { color: var(--accent); background: rgba(139,92,246,0.03); }
+
+    .mobile-menu[aria-hidden="false"] { display: block; }
+
+    /* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <nav role="navigation" aria-label="Main navigation">
+      <a class="logo" href="#top">Aeralla<span>.</span></a>
+
+      <ul class="nav-links" role="menubar" aria-hidden="false">
+        <li role="none"><a role="menuitem" href="#work">Work</a></li>
+        <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Mobile toggle button -->
+      <button class="nav-toggle" id="navToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+        ☰
+      </button>
+
+      <!-- Mobile menu (hidden by default) -->
+      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Top anchor -->
+  <div id="top" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <main id="main" class="hero" role="main" aria-labelledby="hero-title">
+    <div class="hero-badge">Aeralla Portfolio</div>
+    <h1 id="hero-title">Creative Design &amp; Digital Showcase.</h1>
+    <p>Exploring visual arts, brand identity, and modern digital creations.</p>
+    <div class="btn-group">
+      <a href="#work" class="cta-btn">Explore Works</a>
+      <a href="#contact" class="cta-btn cta-btn-secondary">Contact Me</a>
+    </div>
+  </main>
+
+  <!-- Work Showcase -->
+  <section class="container" id="work" aria-labelledby="work-title">
+    <h2 id="work-title" class="section-title">Featured Showcase</h2>
+    <p class="section-desc">Selected projects and design collections.</p>
+
+    <div class="portfolio-grid" aria-live="polite">
+      <article class="portfolio-card" aria-labelledby="proj1-title">
+        <div class="card-img" role="img" aria-label="Visual design showcase">
+          <img src="/assets/img1.jpg" alt="Strawberry Bright serum illustration" width="800" height="220"/>
+        </div>
+        <div class="card-body">
+          <h3 id="proj1-title">Creative Design</h3>
+          <p>Custom graphic concepts, digital art, and modern aesthetic branding.</p>
+          <div class="tags"><span class="tag">Design</span><span class="tag">Branding</span></div>
+        </div>
+      </article>
+
+      <article class="portfolio-card" aria-labelledby="proj2-title">
+        <div class="card-img" role="img" aria-label="Digital portfolio">
+          <img src="/assets/img2.jpg" alt="Moodboard composition" width="800" height="220"/>
+        </div>
+        <div class="card-body">
+          <h3 id="proj2-title">Curated Concepts</h3>
+          <p>Product concepts, visual moodboards, and creative direction projects.</p>
+          <div class="tags"><span class="tag">Concept</span><span class="tag">Styling</span></div>
+        </div>
+      </article>
+
+      <article class="portfolio-card" aria-labelledby="proj3-title">
+        <div class="card-img" role="img" aria-label="Product photography">
+          <img src="/assets/img3.jpg" alt="Special sale product photography" width="800" height="220"/>
+        </div>
+        <div class="card-body">
+          <h3 id="proj3-title">Product Photography</h3>
+          <p>Clean, commercial product shots and promotional layouts.</p>
+          <div class="tags"><span class="tag">Photography</span><span class="tag">E‑commerce</span></div>
+        </div>
+      </article>
+
+      <article class="portfolio-card" aria-labelledby="proj4-title">
+        <div class="card-img" role="img" aria-label="Jewellery collection">
+          <img src="/assets/img4.jpg" alt="Rings collection layout" width="800" height="220"/>
+        </div>
+        <div class="card-body">
+          <h3 id="proj4-title">Rings Collection</h3>
+          <p>Elegant promotional designs and jewel product showcases.</p>
+          <div class="tags"><span class="tag">Jewellery</span><span class="tag">Lifestyle</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="section-title">Get in Touch</h2>
+    <p class="section-desc">Have a question or want to collaborate? Connect with me directly.</p>
+
+    <div class="btn-group" style="justify-content:flex-start;">
+      <a class="cta-btn" href="mailto:hawkarc2003@gmail.com">Email Me</a>
+    </div>
+
+    <div class="social-links" role="list" aria-label="Social links">
+      <a class="social-link" role="listitem" href="https://instagram.com/theaeralla" target="_blank" rel="noopener noreferrer">Instagram (@theaeralla)</a>
+      <a class="social-link" role="listitem" href="https://in.pinterest.com/TRENDCART77/" target="_blank" rel="noopener noreferrer">Pinterest (TRENDCART77)</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Aeralla. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle (accessible behaviour)
+    (function () {
+      const btn = document.getElementById('navToggle');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+
+      function closeMenu() {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        menu.style.display = 'none';
+      }
+      function openMenu() {
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+        menu.style.display = 'block';
+        menu.querySelector('a')?.focus();
+      }
+
+      btn.addEventListener('click', (e) => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeMenu(); else openMenu();
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Initialize state
+      closeMenu();
+    })();
+  </script>
+</body>
+</html>
